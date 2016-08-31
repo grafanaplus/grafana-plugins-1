@@ -1,0 +1,19 @@
+echo "Cleaning up"
+echo ''
+
+rm -rf ./plugins*
+
+echo "Packaging plugins"
+echo ''
+
+for dir in `ls -d */`; do
+  mkdir -p plugins/$dir
+  cp -r ./$dir/dist plugins/$dir
+done
+
+tar -zcvf plugins.tar.gz plugins
+echo ''
+
+echo "Cleaning up"
+echo ''
+rm -rf ./plugins
