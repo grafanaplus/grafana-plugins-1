@@ -11,8 +11,8 @@
     },
     "keywords": ["alarm", "box", "panel"],
     "links": [
-      {"name": "MIT Licence", "https://github.com/BTplc/grafana-plugins/blob/master/LICENSE"},
-      {"name": "Project Site", "https://github.com/BTplc/grafana-plugins"}
+      {"name": "MIT Licence", "url": "https://github.com/BTplc/grafana-plugins/blob/master/LICENSE"},
+      {"name": "Project Site", "url": "https://github.com/BTplc/grafana-plugins"}
     ],
     "screenshots": [
       {"name": "Alarm Box", "path": "src/img/alarm_box.png"},
