@@ -33,7 +33,7 @@ export class TrendBoxCtrl extends MetricsPanelCtrl {
   }
 
   onInitEditMode () {
-    this.addEditorTab('Options', 'public/plugins/diveboard-trend-box-panel/editor.html')
+    this.addEditorTab('Options', 'public/plugins/btplc-trend-box-panel/editor.html')
     this.unitFormats = kbn.getUnitFormats()
   }
 
