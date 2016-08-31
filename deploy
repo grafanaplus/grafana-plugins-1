@@ -1,0 +1,34 @@
+set -e
+
+HOST=$2
+PLUGIN=$1
+USER=root
+
+echo "### HOST ${HOST} ###"
+
+echo "### PLUGIN ${PLUGIN} ###"
+cd ${PLUGIN}
+echo ''
+
+echo "### Installing packages ###"
+npm install
+echo ''
+
+echo "### Running grunt ###"
+grunt
+echo ''
+
+echo "### Checking directory ###"
+ssh ${USER}@$HOST mkdir -pv /data/grafana/plugins/${PLUGIN}
+echo ''
+
+echo "### Copying files ###"
+scp -r dist ${USER}@$HOST:/data/grafana/plugins/${PLUGIN}
+echo ''
+
+echo "### Restarting grafana ###"
+ssh ${USER}@$HOST "docker restart grafana.docker"
+echo ''
+
+echo "### Done! ###"
+cd -
