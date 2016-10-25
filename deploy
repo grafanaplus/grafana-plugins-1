@@ -1,8 +1,18 @@
 set -e
 
-HOST=$2
 PLUGIN=$1
-USER=root
+HOST=$2
+METHOD=$3
+
+if [ $METHOD == chef ]; then
+  USER=grafana
+  RESTART_CMD="sudo /etc/init.d/grafana-server restart"
+  PLUGIN_DIR="/var/lib/grafana/plugins/${PLUGIN}"
+else
+  USER=root
+  RESTART_CMD="docker restart grafana.docker"
+  PLUGIN_DIR="/data/grafana/plugins/${PLUGIN}"
+fi
 
 echo "### HOST ${HOST} ###"
 
@@ -19,15 +29,15 @@ grunt
 echo ''
 
 echo "### Checking directory ###"
-ssh ${USER}@$HOST mkdir -pv /data/grafana/plugins/${PLUGIN}
+ssh ${USER}@$HOST mkdir -pv ${PLUGIN_DIR}
 echo ''
 
 echo "### Copying files ###"
-scp -r dist ${USER}@$HOST:/data/grafana/plugins/${PLUGIN}
+scp -r dist ${USER}@$HOST:${PLUGIN_DIR}
 echo ''
 
 echo "### Restarting grafana ###"
-ssh ${USER}@$HOST "docker restart grafana.docker"
+ssh ${USER}@$HOST "${RESTART_CMD}"
 echo ''
 
 echo "### Done! ###"
