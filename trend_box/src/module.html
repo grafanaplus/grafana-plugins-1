@@ -1,10 +1,10 @@
-<table class="box" style="height: {{ctrl.height}}px">
-  <tr style="font-weight: bold; font-size: {{ctrl.panel.percentSize}}">
+<table class="box" ng-style="{'height': ctrl.height'px'}">
+  <tr ng-style="{'font-weight':'bold', 'font-size':ctrl.panel.percentSize}">
     <td>
       {{ctrl.format(ctrl.box.percentChange, 'percent')}}
     </td>
   </tr>
-  <tr style="font-size: {{ctrl.panel.numberSize}}">
+  <tr ng-style="{'font-size': ctrl.panel.numberSize}">
     <td>
       {{ctrl.format(ctrl.box.latestValue)}}
     </td>
