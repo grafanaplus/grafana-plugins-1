@@ -9,7 +9,7 @@ export class Builder {
     var cleanedSeries = _.map(seriesList, this._cleanup)
 
     return { oldestValue: this._oldestValueFor(cleanedSeries),
-             latestValue: this._latestValueFor(cleanedSeries) }
+      latestValue: this._latestValueFor(cleanedSeries) }
   }
 
   _cleanup (series) {
