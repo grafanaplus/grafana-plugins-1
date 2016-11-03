@@ -13,8 +13,8 @@ export class Builder {
     var points = this._cleanup(series)
 
     return { name: series.target,
-             oldestValue: this._oldestValueFor(points),
-             latestValue: this._latestValueFor(points) }
+      oldestValue: this._oldestValueFor(points),
+      latestValue: this._latestValueFor(points) }
   }
 
   _cleanup (series) {
