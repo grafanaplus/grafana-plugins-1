@@ -6,7 +6,7 @@ export class Builder {
   }
 
   call (seriesList = []) {
-    var groupedSeries = _.groupBy(seriesList, this._shortName, this)
+    var groupedSeries = _.groupBy(seriesList, _.bind(this._shortName, this))
 
     return _.map(groupedSeries, (rowSeries, shortName) => {
       return { name: shortName, cells: this._cellsFor(rowSeries) }
